@@ -8,38 +8,47 @@ const Navbar = () => {
 
     return (
 
-    <div className='fixed w-full h-[80px] flex justify-between items-center px-5 bg-pink-300 text-gray-800 '>
-        <div>
-            <p>Logo</p>
-        </div>
+    <header className='fixed w-full h-[80px] top-0 z-[20] text-gray-800 '>
         
-        {/* menu */}
-        {/* if it's on small screen, the main menu won't show */}
-        <div className='hidden md:flex font-semibold bg-green-300'>
-            <ul className='hidden md:flex '>
-                <li>Home</li>
-                <li className='mr-20'>Explore</li>
-            </ul>
+        <div className='flex justify-between items-center h-full px-5 py-4'>
+            <div className='ml-9'>
+                    <p>Logo</p>
+                </div>
+            <nav>
+                
+                {/* Main menu */}
+                {/* if it's on small screen, the main menu won't show */}
+                <div className='hidden md:flex font-semibold '>
+                    <ul className='hidden md:flex '>
+                        <li>Home</li>
+                        <li className='mr-20'>Explore</li>
+                    </ul>
+                </div>
+
+                {/* hamburger */}
+
+                <div onClick={handleClick} className='md:hidden z-10'>
+                    {!nav ? <FaBars/> : <FaTimes/>}
+                </div>
+
+            </nav>
+
         </div>
 
-        {/* hamburger */}
-
-        <div onClick={handleClick} className='md:hidden z-10'>
-            {!nav ? <FaBars/> : <FaTimes/>}
+        {/* horizontal line */}
+        <div className='w-full h-[2px] bg-gray-300'>
         </div>
-
+    
         {/* mobile menu */}
-
         <ul className={!nav ? 'hidden': 'absolute top-0 left-o w-full h-screen bg-white flex flex-col justify-center items-center'}>
             <li>Home</li>
             <li>Explore</li>
         </ul>
 
+        
 
-
+    </header>
     
-    </div>
-
 
   )
 }
