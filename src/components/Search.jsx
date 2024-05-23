@@ -2,7 +2,7 @@ import React from 'react'
 
 const Search = () => {
   return (
-    <div className='mt-[100px] h-[200px] bg-pink-200 flex flex-col items-center md:mr-[100px]  md:ml-[100px] md:rounded-lg'>
+    <div className='mt-[100px] h-[200px] bg-pink-100 flex flex-col items-center md:mr-[100px]  md:ml-[100px] md:rounded-lg'>
       
         <div className='mb-[20px] mt-[60px] ml-[-160px]'>
             <h3 className='text-3xl font-semibold'>Find Recipes You Love</h3>
