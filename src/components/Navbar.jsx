@@ -14,7 +14,7 @@ const Navbar = () => {
 
     return (
 
-    <header className='w-full h-[80px] top-0 text-gray-600 '>
+    <header className='w-full h-[80px] top-0 text-gray-800 '>
         
         <div className='flex justify-between items-center h-full px-5 py-4'>
             <div className='ml-9'>
@@ -26,8 +26,8 @@ const Navbar = () => {
                 {/* if it's on small screen, the main menu won't show */}
                 <div className='hidden md:flex font-semibold '>
                     <ul className='hidden md:flex '>
-                        <li>Home</li>
-                        <li className='mr-20'>Explore</li>
+                        <li className='mr-[15px] px-7 py-2 hover:border-b-4 border-gray-900'>Home</li>
+                        <li className='mr-[70px] px-7 py-2 hover:border-b-4 border-gray-900'>Explore</li>
                     </ul>
                 </div>
 
