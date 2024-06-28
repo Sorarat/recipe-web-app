@@ -46,7 +46,7 @@ const Home = () => {
       <Categories />
 
       {/* Display fetched recipes */}
-      <div className="flex flex-wrap justify-start">
+      <div className="flex flex-wrap  gap-10 justify-start">
         {preFetchedRecipes.slice(0, 4).map(recipe => (
           <RecipeCard 
             key={recipe.recipe.label}
