@@ -40,11 +40,8 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar />
       <Hero />
-      <Search />
       <Categories />
-
       
       <div className='pt-20 mb-6 md:mr-[100px]  md:ml-[100px]'>
         <h3 className='text-3xl font-semibold'>You May Like</h3>

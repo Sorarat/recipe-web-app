@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import {FaBars, FaTimes} from 'react-icons/fa';
+import {Link} from 'react-router-dom';
 
 const Navbar = () => {
 
     const [nav, setNav] = useState(false);
+
     const handleClick = () => {
         setNav(!nav);
         console.log('nav state: ', !nav);
@@ -26,21 +28,35 @@ const Navbar = () => {
                 {/* if it's on small screen, the main menu won't show */}
                 <div className='hidden md:flex font-semibold '>
                     <ul className='hidden md:flex '>
-                        <li className='mr-[15px] px-7 py-2 hover:border-b-4 border-gray-900'>Home</li>
-                        <li className='mr-[70px] px-7 py-2 hover:border-b-4 border-gray-900'>Explore</li>
+                        <li className='mr-[15px] px-7 py-2 hover:border-b-4 border-gray-900'>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li className='mr-[15px] px-7 py-2 hover:border-b-4 border-gray-900'>
+                            <Link to="/search">Search</Link>
+                        </li>
+                        <li className='mr-[15px] px-7 py-2 hover:border-b-4 border-gray-900'>
+                            <Link to="/explore">Explore</Link>
+                        </li>
                     </ul>
                 </div>
 
                 {/* hamburger */}
                 <div onClick={handleClick} className='md:hidden z-10 cursor-pointer'>
-                    {/* {!nav ? <FaBars size={30}/> : <FaTimes size={30}/>} */}
-                    <FaBars/>
+                    {!nav ? <FaBars size={30}/> : <FaTimes size={30}/>}
+                    {/* <FaBars/> */}
                 </div>
 
                 {/* mobile menu */}
                 <ul className={!nav ? 'hidden': 'absolute top-0 left-0 w-full h-screen bg-gray-200 flex flex-col justify-center items-center'}>
-                    <li className='py-6 text-3xl'>Home</li>
-                    <li className='py-6 text-3xl'>Explore</li>
+                    <li className='py-6 text-3xl'>
+                        <Link to="/" onClick={handleClick}>Home</Link>
+                    </li>
+                    <li className='py-6 text-3xl'>Search
+                        <Link to="/search" onClick={handleClick}>Search</Link>
+                    </li>
+                    <li className='py-6 text-3xl'>
+                        <Link to="/search" onClick={handleClick}>Search</Link>
+                    </li>
                 </ul>
 
             </nav>

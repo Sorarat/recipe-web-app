@@ -1,6 +1,8 @@
-import React from 'react'
+import React from 'react';
+
 
 const Search = () => {
+
   return (
     <div className='mt-[100px] h-[200px] bg-pink-100 flex flex-col items-center md:mr-[100px]  md:ml-[100px] md:rounded-lg'>
       
