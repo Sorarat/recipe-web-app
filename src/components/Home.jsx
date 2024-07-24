@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './Navbar';
 import Hero from './Hero';
-import Search from './Search';
 import Categories from './Categories';
-import RecipeCard from './recipeCard';
+import RecipeCard from './RecipeCard';
+import {APP_ID, APP_KEY} from '../config';
 
 const Home = () => {
-  const APP_ID = "066e72ed";
-  const APP_KEY = "970feea0d921451d76c4d528f18fb4b9";
 
   const [preFetchedRecipes, setPreFetchedRecipes] = useState([]);
 
@@ -37,6 +34,8 @@ const Home = () => {
       console.error('Error fetching recipes:', error);
     }
   };
+
+  
 
   return (
     <div>
