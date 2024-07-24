@@ -15,9 +15,8 @@ const Categories = () => {
             </div>
 
         </div>
-       
 
-        {/* Squares */}
+        {/* Categories Squares */}
 
         <div className='h-[150px] flex gap-x-0.5 justify-start md:justify-between'>
             <div className='h-[175px] w-[145px] border-black bg-gray-100 rounded-md'>
@@ -47,7 +46,7 @@ const Categories = () => {
 
         </div>
 
-
+       
 
     </div>
   )

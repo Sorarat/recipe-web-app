@@ -45,17 +45,24 @@ const Home = () => {
       <Search />
       <Categories />
 
+      
+      <div className='pt-20 mb-6 md:mr-[100px]  md:ml-[100px]'>
+        <h3 className='text-3xl font-semibold'>You May Like</h3>
+        
       {/* Display fetched recipes */}
-      <div className="flex flex-wrap  gap-10 justify-start">
+      <div className="flex flex-wrap lg:flex-nowrap gap-4 p-4">
         {preFetchedRecipes.slice(0, 4).map(recipe => (
-          <RecipeCard 
-            key={recipe.recipe.label}
-            title={recipe.recipe.label}
-            calories={recipe.recipe.calories}
-            image={recipe.recipe.image}
-            className="flex-shrink-0 w-full sm:w-1/2 md:w-1/4 lg:w-1/4 p-2"
-          />
+          <div key={recipe.recipe.label} className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2'>
+            <RecipeCard 
+              key={recipe.recipe.label}
+              title={recipe.recipe.label}
+              calories={recipe.recipe.calories}
+              image={recipe.recipe.image}
+              className="w-full h-full"
+            />
+          </div>
         ))}
+      </div>
       </div>
     </div>
   );
