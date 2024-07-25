@@ -9,7 +9,7 @@ const Hero = () => {
   
   useEffect(() => {
     const fetchFeaturedRecipe = async () => {
-      const dishes = ['Cookies', 'Salad', 'Rice'];
+      const dishes = ['Cookies', 'Salad', 'Seafood Pizza'];
 
       try {
         const fetchedRecipes = await Promise.all(
@@ -48,8 +48,16 @@ const Hero = () => {
 
   if (isLoading) {
     return (
-      <div className='mt-[80px] h-[500px] bg-light-blue flex items-center justify-center'>
+      <div className='mt-[80px] h-[500px] bg-light-blue flex items-center justify-center md:mr-[100px]  md:ml-[100px] md:rounded-lg'>
         <div className='text-2xl'>Loading...</div>
+      </div>
+    );
+  }
+
+  if (featuredRecipes.length === 0) {
+    return (
+      <div className='mt-[80px] h-[500px] bg-light-blue flex items-center justify-center'>
+        <div className='text-3xl'>No recipes found</div>
       </div>
     );
   }
@@ -64,6 +72,12 @@ const Hero = () => {
             <h3 className='text-3xl'>{currentRecipe.label}</h3>
             <div>
                 <p>Calories: {Math.ceil(currentRecipe.calories)}</p>
+                {/* <p>Ingredients</p>
+                <ul>
+                  {currentRecipe.ingredientLines && currentRecipe.ingredientLines.map((line, index) => (
+                    <li key={index}>{line}</li>
+                  ))}
+                </ul> */}
             </div> 
         </div>
 
