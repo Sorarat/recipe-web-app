@@ -9,7 +9,7 @@ const Hero = () => {
   
   useEffect(() => {
     const fetchFeaturedRecipe = async () => {
-      const dishes = ['Cookies', 'Salad', 'Fried Rice'];
+      const dishes = ['Cookies', 'Salad', 'Rice'];
 
       try {
         const fetchedRecipes = await Promise.all(
@@ -47,7 +47,11 @@ const Hero = () => {
 
 
   if (isLoading) {
-    return <div> Loading...</div>
+    return (
+      <div className='mt-[80px] h-[500px] bg-light-blue flex items-center justify-center'>
+        <div className='text-2xl'>Loading...</div>
+      </div>
+    );
   }
 
   const currentRecipe = featuredRecipes[currentRecipeIndex];
