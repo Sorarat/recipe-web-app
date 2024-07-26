@@ -65,7 +65,7 @@ const Hero = () => {
   const currentRecipe = featuredRecipes[currentRecipeIndex];
 
   return (
-    <div className='mt-[80px] h-[500px] bg-light-blue flex flex-row items-center justify-evenly px-10 md:mr-[100px]  md:ml-[100px] md:rounded-lg'>
+    <div className='mt-[80px] h-[500px] bg-light-blue flex flex-row items-center justify-evenly shadow-md px-10 md:mr-[100px]  md:ml-[100px] md:rounded-lg'>
 
         {/* left side */}
         <div className='flex flex-col items-cente' >

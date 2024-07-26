@@ -52,7 +52,7 @@ const Home = () => {
             <RecipeCard 
               key={recipe.recipe.label}
               title={recipe.recipe.label}
-              calories={recipe.recipe.calories}
+              calories={Math.ceil(recipe.recipe.calories)}
               image={recipe.recipe.image}
               className="w-full h-full"
             />

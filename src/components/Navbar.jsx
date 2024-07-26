@@ -51,11 +51,11 @@ const Navbar = () => {
                     <li className='py-6 text-3xl'>
                         <Link to="/" onClick={handleClick}>Home</Link>
                     </li>
-                    <li className='py-6 text-3xl'>Search
+                    <li className='py-6 text-3xl'>
                         <Link to="/search" onClick={handleClick}>Search</Link>
                     </li>
                     <li className='py-6 text-3xl'>
-                        <Link to="/search" onClick={handleClick}>Search</Link>
+                        <Link to="/search" onClick={handleClick}>Explore</Link>
                     </li>
                 </ul>
 
