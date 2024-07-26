@@ -1,6 +1,19 @@
 import React from 'react'
+import CategoriesCard from './CategoriesCard'
 
 const Categories = () => {
+
+    const categories = [
+        { title: 'Breakfast', image: 'src/img/1.png'},
+        { title: 'Lunch', image: 'src/img/2.png'},
+        { title: 'Dinner', image: 'src/img/3.png'},
+        { title: 'Asian', image: 'src/img/5.png'},
+        { title: 'American', image: 'src/img/6.png'},
+        { title: 'Mediterranean', image: 'src/img/7.png'},
+
+    ]
+
+
   return (
     <div className='mt-[100px] h-[200px] bg-whie flex flex-col md:mr-[100px]  md:ml-[100px] '>
 
@@ -18,35 +31,17 @@ const Categories = () => {
 
         {/* Categories Squares */}
 
-        <div className='h-[150px] flex gap-x-0.5 justify-start md:justify-between'>
-            <div className='h-[175px] w-[145px] border-black bg-gray-100 rounded-md'>
-
-            </div>
-
-            <div className='h-[175px] w-[145px] border-black bg-gray-100 rounded-md'>
-
-            </div>
-
-            <div className='h-[175px] w-[145px] border-black bg-gray-100 rounded-md'>
-
-            </div>
-
-            <div className='h-[175px] w-[145px] border-black bg-gray-100 rounded-md'>
-
-            </div>
-
-            <div className='h-[175px] w-[145px] border-black bg-gray-100 rounded-md'>
-
-            </div>
-
-            <div className='h-[175px] w-[145px] border-black bg-gray-100 rounded-md'>
-
-            </div>
-
+        <div className='flex flex-nowrap gap-2 justify-between'>
+            {categories.slice(0,6).map((category, index) => (
+                <CategoriesCard
+                    key={index}
+                    categorieTitle={category.title}
+                    image={category.image}
+                />
+            ))}
 
         </div>
 
-       
 
     </div>
   )
