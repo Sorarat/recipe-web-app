@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import RecipeCard from './RecipeCard';
 import { APP_ID, APP_KEY } from '../config';
+import { useLocation } from 'react-router-dom';
 
 const Explore = () => {
 
@@ -9,6 +10,15 @@ const Explore = () => {
 
   // state to hold the fetched recipes
   const [recipes, setRecipes] = useState([]);
+
+  const query = new URLSearchParams(useLocation().search);
+  const categoryFromUrl = query.get('category');
+
+  useEffect(() => {
+    if (categoryFromUrl) {
+      setSelectedCategory(categoryFromUrl);
+    }
+  },  [categoryFromUrl]);
 
   // fetch recipes when the selected category changes
   useEffect(() => {
@@ -159,7 +169,7 @@ const Explore = () => {
 
               </div>
             ): (
-              <p> No recipes available</p>
+              <p className='flex justify-center'> Loading recipes.... </p>
             )}
 
           </div>

@@ -13,7 +13,7 @@ const RecipeCard = ({ title, calories, image, className }) => {
 
       <div className="p-2">
         <div>
-          <p className="text-lg font-semibold">{title}</p>
+          <p className="text-lg font-medium">{title}</p>
         </div>
         <div>
           <p className="text-sm text-gray-600">{calories}</p>
