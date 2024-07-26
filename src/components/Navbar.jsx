@@ -20,7 +20,7 @@ const Navbar = () => {
         
         <div className='flex justify-between items-center h-full px-5 py-4'>
             <div className='ml-9'>
-                    <p>Logo</p>
+                    <img src="src/img/logo-4.png" alt="logo" style={{height: '90px', width: '200px'}} />
                 </div>
             <nav>
                 
