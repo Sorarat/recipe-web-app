@@ -48,16 +48,16 @@ const Hero = () => {
 
   if (isLoading) {
     return (
-      <div className='mt-[80px] h-[500px] bg-light-blue flex items-center justify-center md:mr-[100px]  md:ml-[100px] md:rounded-lg'>
-        <div className='text-2xl'>Loading...</div>
+      <div className='mt-[80px] h-[500px] bg-[#0A142F] flex items-center justify-center md:mr-[100px]  md:ml-[100px] md:rounded-lg'>
+        <div className='text-2xl text-gray-100'>Loading...</div>
       </div>
     );
   }
 
   if (featuredRecipes.length === 0) {
     return (
-      <div className='mt-[80px] h-[500px] bg-light-blue flex items-center justify-center'>
-        <div className='text-3xl'>No recipes found</div>
+      <div className='mt-[80px] h-[500px] bg-[#0A142F] flex items-center justify-center'>
+        <div className='text-3xl text-gray-100'>No recipes found</div>
       </div>
     );
   }
@@ -65,18 +65,18 @@ const Hero = () => {
   const currentRecipe = featuredRecipes[currentRecipeIndex];
 
   return (
-    <div className='mt-[80px] h-[500px] bg-light-blue flex flex-row items-center justify-evenly shadow-md pl-40 md:mr-[100px]  md:ml-[100px] md:rounded-lg'>
+    <div className='mt-[80px] h-[500px] bg-[#0A142F] flex flex-row items-center justify-evenly shadow-md pl-40  md:mr-[100px]  md:ml-[100px] md:rounded-lg'>
 
         {/* left side */}
-        <div className='flex flex-col items-centers'  style={{ width: '50%' }} >
-            <h3 className='text-5xl font-semibold'>{currentRecipe.label}</h3>
+        <div className='flex flex-col items-centers pr-5'  style={{ width: '50%' }} >
+            <h3 className='text-gray-200 text-5xl font-semibold'>{currentRecipe.label}</h3>
             <br />
             <div>
-                <p className='text-xl'>Calories: {Math.ceil(currentRecipe.calories)}</p>
+                <p className='text-gray-200 text-xl'>Calories: {Math.ceil(currentRecipe.calories)}</p>
             </div> 
 
             <div className='mt-20'>
-              <button className='bg-black p-3 rounded-md text-white'>View Recipes</button>
+              <button className='bg-gray-300 p-3 rounded-md text-gray-900 text-md font-medium'>View Recipes</button>
             </div>
         </div>
 

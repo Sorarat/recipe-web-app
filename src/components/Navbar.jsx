@@ -16,25 +16,25 @@ const Navbar = () => {
 
     return (
 
-    <header className='w-full h-[80px] top-0 text-gray-800 '>
+    <header className='w-full h-[80px] top-0 text-gray-100 bg-[#0A142F] '>
         
         <div className='flex justify-between items-center h-full px-5 py-4'>
             <div className='ml-9'>
-                    <img src="src/img/logo-4.png" alt="logo" style={{height: '90px', width: '200px'}} />
+                    <img src="src/img/dark-logo.png" alt="logo" style={{height: '70px', width: '150px'}} />
                 </div>
             <nav>
                 
                 {/* Main menu */}
                 {/* if it's on small screen, the main menu won't show */}
-                <div className='hidden md:flex font-semibold '>
+                <div className='hidden md:flex font-medium '>
                     <ul className='hidden md:flex '>
-                        <li className='mr-[15px] px-7 py-2 hover:border-b-4 border-gray-900'>
+                        <li className='mr-[15px] px-7 py-2 hover:border-b-4 border-white'>
                             <Link to="/">Home</Link>
                         </li>
-                        <li className='mr-[15px] px-7 py-2 hover:border-b-4 border-gray-900'>
+                        <li className='mr-[15px] px-7 py-2 hover:border-b-4 border-white'>
                             <Link to="/search">Search</Link>
                         </li>
-                        <li className='mr-[15px] px-7 py-2 hover:border-b-4 border-gray-900'>
+                        <li className='mr-[15px] px-7 py-2 hover:border-b-4 border-white'>
                             <Link to="/explore">Explore</Link>
                         </li>
                     </ul>

@@ -45,7 +45,7 @@ const Search = () => {
             
             />
 
-            <div className='flex items-center bg-gray-700 px-4 py-2 rounded-lg text-white hover:bg-gray-900'>
+            <div className='flex items-center bg-[#4B0CF7] px-4 py-2 rounded-lg text-white hover:bg-opacity-75'>
                 <button onClick={handleSearch}>
                     Search
                 </button>
