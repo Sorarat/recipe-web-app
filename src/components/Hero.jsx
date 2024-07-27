@@ -65,30 +65,31 @@ const Hero = () => {
   const currentRecipe = featuredRecipes[currentRecipeIndex];
 
   return (
-    <div className='mt-[80px] h-[500px] bg-light-blue flex flex-row items-center justify-evenly shadow-md px-10 md:mr-[100px]  md:ml-[100px] md:rounded-lg'>
+    <div className='mt-[80px] h-[500px] bg-light-blue flex flex-row items-center justify-evenly shadow-md pl-40 md:mr-[100px]  md:ml-[100px] md:rounded-lg'>
 
         {/* left side */}
-        <div className='flex flex-col items-cente' >
-            <h3 className='text-3xl'>{currentRecipe.label}</h3>
+        <div className='flex flex-col items-centers'  style={{ width: '50%' }} >
+            <h3 className='text-5xl font-semibold'>{currentRecipe.label}</h3>
+            <br />
             <div>
-                <p>Calories: {Math.ceil(currentRecipe.calories)}</p>
-                {/* <p>Ingredients</p>
-                <ul>
-                  {currentRecipe.ingredientLines && currentRecipe.ingredientLines.map((line, index) => (
-                    <li key={index}>{line}</li>
-                  ))}
-                </ul> */}
+                <p className='text-xl'>Calories: {Math.ceil(currentRecipe.calories)}</p>
             </div> 
+
+            <div className='mt-20'>
+              <button className='bg-black p-3 rounded-md text-white'>View Recipes</button>
+            </div>
         </div>
 
         {/* right side: pics */}
-        <div className='w-1/3 h-full bg-gray-400 flex items-center justify-center'>
+        <div className='h-full bg-gray-400 flex items-center justify-end rounded-r-md' style={{ width: '50%' }}>
             <img 
-              className='w-[400px] h-[300px] object-cover'
+              className='h-full object-cover w-full rounded-r-md'
               src={currentRecipe.image}
               alt={`Recipe: ${currentRecipe.label}`}
             />
         </div>
+        
+       
 
     </div>
 
