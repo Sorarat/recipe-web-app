@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom';
 import Hero from './Hero';
 import Categories from './Categories';
 import RecipeCard from './RecipeCard';
@@ -49,6 +50,7 @@ const Home = () => {
       <div className="flex flex-wrap lg:flex-nowrap gap-4 p-4">
         {preFetchedRecipes.slice(0, 4).map(recipe => (
           <div key={recipe.recipe.label} className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2'>
+            <Link to="/view-recipes" state={{ recipe: recipe.recipe}} > 
             <RecipeCard 
               key={recipe.recipe.label}
               title={recipe.recipe.label}
@@ -56,6 +58,7 @@ const Home = () => {
               image={recipe.recipe.image}
               className="w-full h-full"
             />
+            </Link>
           </div>
         ))}
       </div>

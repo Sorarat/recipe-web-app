@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {APP_ID, APP_KEY} from '../config';
+import {Link} from 'react-router-dom';
 import RecipeCard from './RecipeCard';
 
 const Search = () => {
@@ -56,12 +57,14 @@ const Search = () => {
         <div className='flex flex-wrap lg:flex-nowrap gap-4 pt-20'>
             {searchResults.slice(0, 5).map((result, index) => (
                 <div key={index} className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2'>
+                    <Link to="/view-recipes" state={{ recipe: result.recipe}}>
                     <RecipeCard
                         title={result.recipe.label}
                         calories={Math.ceil(result.recipe.calories)}
                         image={result.recipe.image}
                         className="w-full h-full"
                     />
+                    </Link>
                 </div>
             ))}
         </div>

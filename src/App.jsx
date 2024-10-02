@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Search from "./components/Search";
 import Explore from "./components/Explore";
+import ViewRecipes from "./components/ViewRecipes";
 
 function App() {
   
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/search" element={<Search/>} />
         <Route path="/explore" element={<Explore/>} />
+        <Route path="/view-recipes" element={<ViewRecipes/>} />
       </Routes>
     </Router>
   );

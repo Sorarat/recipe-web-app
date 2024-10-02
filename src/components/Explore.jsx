@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import RecipeCard from './RecipeCard';
 import { APP_ID, APP_KEY } from '../config';
 import { useLocation } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const Explore = () => {
 
@@ -160,11 +161,13 @@ const Explore = () => {
             {recipes.length > 0 ? (
               <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                 {recipes.slice(0,9).map((recipe, index) => (
-                  <RecipeCard
-                    key={index}
-                    title={recipe.recipe.label}
-                    image={recipe.recipe.image}
-                  />
+                  <Link to="/view-recipes" state={{recipe:recipe.recipe}}>
+                    <RecipeCard
+                      key={index}
+                      title={recipe.recipe.label}
+                      image={recipe.recipe.image}
+                    />
+                  </Link>
                 ))}
 
               </div>

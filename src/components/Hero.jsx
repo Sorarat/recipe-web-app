@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {APP_ID, APP_KEY} from '../config';
+import {Link} from 'react-router-dom';
 
 const Hero = () => {
 
@@ -75,8 +76,15 @@ const Hero = () => {
                 <p className='text-gray-200 text-xl'>Calories: {Math.ceil(currentRecipe.calories)}</p>
             </div> 
 
+            
             <div className='mt-20'>
-              <button className='bg-gray-300 p-3 rounded-md text-gray-900 text-md font-medium'>View Recipes</button>
+              {/* Pass the recipe data to the ViewRecipe page */}
+              <Link to="/view-recipes" state={{ recipe: currentRecipe }}>
+                  <button className='bg-gray-300 p-3 rounded-md text-gray-900 text-md font-medium'>
+                    View Recipes
+                  </button>
+              </Link>
+
             </div>
         </div>
 
