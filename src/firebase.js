@@ -5,7 +5,7 @@ import { getAuth } from "firebase/auth";
 
 // web app's firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyAMwMEAFykS5soIpao55DN9c6ql81HFs54",
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: "recipe-lookup-web-app.firebaseapp.com",
     projectId: "recipe-lookup-web-app",
     storageBucket: "recipe-lookup-web-app.appspot.com",
