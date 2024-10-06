@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Search from "./components/Search";
 import Explore from "./components/Explore";
 import ViewRecipes from "./components/ViewRecipes";
+import Login from "./components/Login";
 
 function App() {
   
@@ -16,6 +17,7 @@ function App() {
         <Route path="/search" element={<Search/>} />
         <Route path="/explore" element={<Explore/>} />
         <Route path="/view-recipes" element={<ViewRecipes/>} />
+        <Route path="/login" element={<Login/>}/>
       </Routes>
     </Router>
   );

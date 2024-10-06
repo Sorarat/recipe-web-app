@@ -5,7 +5,7 @@ import { getAuth } from "firebase/auth";
 
 // web app's firebase configuration
 const firebaseConfig = {
-    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: "recipe-lookup-web-app.firebaseapp.com",
     projectId: "recipe-lookup-web-app",
     storageBucket: "recipe-lookup-web-app.appspot.com",
@@ -21,3 +21,4 @@ const analytics = getAnalytics(app);
 // export the firebase services
 export const auth = getAuth(app);
 // export const db = getFirestore(app);
+export default app;

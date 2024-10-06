@@ -38,7 +38,15 @@ const Navbar = () => {
                             <Link to="/explore">Explore</Link>
                         </li>
                     </ul>
+
+                   <Link to="/login">
+                        <button className='mr-[30px] bg-white  hover:bg-gray-200 text-[#0A142F] rounded h-10 w-20'>
+                            Log in
+                        </button>
+                    </Link>
+                
                 </div>
+                
 
                 {/* hamburger */}
                 <div onClick={handleClick} className='md:hidden z-10 cursor-pointer'>
