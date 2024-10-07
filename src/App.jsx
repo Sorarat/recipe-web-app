@@ -6,6 +6,7 @@ import Search from "./components/Search";
 import Explore from "./components/Explore";
 import ViewRecipes from "./components/ViewRecipes";
 import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 function App() {
   
@@ -18,6 +19,7 @@ function App() {
         <Route path="/explore" element={<Explore/>} />
         <Route path="/view-recipes" element={<ViewRecipes/>} />
         <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" element={<Signup/>}/>
       </Routes>
     </Router>
   );
