@@ -1,8 +1,43 @@
-import React, { useState } from 'react'
-import {FaBars, FaTimes} from 'react-icons/fa';
-import {Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth } from '../firebase';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 
 const Navbar = () => {
+
+    // sign out
+    const navigate = useNavigate();
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
+
+    const handleLogout = () => {
+        signOut(auth).then(() => {
+            // Sign-out successful.
+                setIsLoggedIn(false);
+                navigate("/");
+                console.log("Signed out successfully")
+            }).catch((error) => {
+                console.log("Error signing out: ", error);
+            });
+    }
+
+    // listen for changes in auth state (whether the user is logged in or logged out)
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setIsLoggedIn(true); // user is signed in
+            }
+            else {
+                setIsLoggedIn(false); // user is signed out
+            }
+        });
+        return () => unsubscribe(); // Clean up the listener when the component is unmounted
+
+    }, []);
+
+
+
+
 
     const [nav, setNav] = useState(false);
 
@@ -39,12 +74,26 @@ const Navbar = () => {
                         </li>
                     </ul>
 
-                   <Link to="/login">
-                        <button className='mr-[30px] bg-white  hover:bg-gray-200 text-[#0A142F] rounded h-10 w-20'>
-                            Log in
-                        </button>
-                    </Link>
-                
+                    
+                    {/* Display either Log In or Log out button based on login status */}
+                    
+                    {!isLoggedIn ? (
+                        <Link to="/login">
+                            <button className='mr-[30px] bg-white  hover:bg-gray-200 text-[#0A142F] rounded h-10 w-20'>
+                                Log in
+                            </button>
+                        </Link>
+                        ) : (
+                            <button 
+                                className='mr-[30px] bg-white  hover:bg-gray-200 text-[#0A142F] rounded h-10 w-20'
+                                onClick={handleLogout}
+                            >
+                                Logout
+                            </button>
+                        )
+    
+                    }
+
                 </div>
                 
 
@@ -55,7 +104,7 @@ const Navbar = () => {
                 </div>
 
                 {/* mobile menu */}
-                <ul className={!nav ? 'hidden': 'absolute top-0 left-0 w-full h-screen bg-gray-200 flex flex-col justify-center items-center'}>
+                <ul className={!nav ? 'hidden': 'absolute top-0 left-0 w-full h-screen bg-[#0A142F] flex flex-col justify-center items-center'}>
                     <li className='py-6 text-3xl'>
                         <Link to="/" onClick={handleClick}>Home</Link>
                     </li>
@@ -65,6 +114,15 @@ const Navbar = () => {
                     <li className='py-6 text-3xl'>
                         <Link to="/search" onClick={handleClick}>Explore</Link>
                     </li>
+                    {!isLoggedIn ? (
+                        <li className='py-6 text-3xl'>
+                            <Link to="/login" onClick={handleClick}>Log in </Link>
+                        </li>
+                    ) : (
+                        <li className='py-6 text-3xl'>
+                        <button onClick={() => { handleLogout(); handleClick(); }}>Log out</button>
+                      </li>
+                    )}
                 </ul>
 
             </nav>

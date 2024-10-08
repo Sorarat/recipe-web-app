@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 import { auth } from '../firebase';
 import {Link, NavLink, useNavigate} from 'react-router-dom';
-import Login from './Login';
-
+import { createUserWithEmailAndPassword} from 'firebase/auth';
+ 
 const Signup = () => {
 
     const navigate = useNavigate();
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const onSubmit = async (e) => {
         e.preventDefault()
@@ -24,6 +24,7 @@ const Signup = () => {
           .catch((error) => {
               const errorCode = error.code;
               const errorMessage = error.message;
+              setErrorMessage(errorMessage);
               console.log(errorCode, errorMessage);
               
           });
@@ -47,7 +48,7 @@ const Signup = () => {
             <input 
                 type="email" required
                 placeholder='Enter your email' 
-                onChange={(e) => setEmail(e.target)}
+                onChange={(e) => setEmail(e.target.value)}
                 className='bg-white border border-gray-300 rounded-md shadow-sm p-2 '/> 
             </div>
 
@@ -63,15 +64,23 @@ const Signup = () => {
 
             {/* Login Button */}
             <div>
-            <button 
-                type='submit' 
-                className='bg-[#0A142F] text-gray-100 p-2 rounded-md w-[195px]'
-            
-                >Login</button>
-                
+                <button 
+                    className='bg-[#0A142F] text-gray-100 p-2 rounded-md w-[195px] hover:bg-[#1B2A56] hover:text-white transition duration-300 ease-in-out'
+                    onClick={onSubmit}
+                    >
+                    Sign up
+                </button>
             </div>
 
-            {/*/ No account, sign up*/}
+            {/* Error Message Display */}
+            {errorMessage && (
+                <div className='mt-4 p-2 bg-red-500 text-white rounded'>
+                    <p>{errorMessage}</p>
+                </div>
+            )}
+
+
+            {/*/ Already have an account, login*/}
             <div className='flex mt-10'>
             <div className='mr-5'>
                 <p>Already have an account?</p>

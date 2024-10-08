@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Hero from './Hero';
 import Categories from './Categories';
 import RecipeCard from './RecipeCard';
-import {APP_ID, APP_KEY} from '../config';
+import { APP_ID, APP_KEY } from '../config';
 
 const Home = () => {
+
 
   const [preFetchedRecipes, setPreFetchedRecipes] = useState([]);
 

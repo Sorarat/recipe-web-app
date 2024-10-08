@@ -48,7 +48,7 @@ const Login = () => {
           <input 
             type="email" required
             placeholder='Enter your email' 
-            onChange={(e) => setEmail(e.target)}
+            onChange={(e) => setEmail(e.target.value)}
             className='bg-white border border-gray-300 rounded-md shadow-sm p-2 '/> 
         </div>
 
@@ -65,8 +65,7 @@ const Login = () => {
         {/* Login Button */}
         <div>
           <button 
-            type='submit' 
-            className='bg-[#0A142F] text-gray-100 p-2 rounded-md w-[195px]'
+            className='bg-[#0A142F] text-gray-100 p-2 rounded-md w-[195px] hover:bg-[#1B2A56] hover:text-white transition duration-300 ease-in-out'
             onClick={onLogin}
             >Login</button>
             
