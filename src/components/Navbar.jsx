@@ -10,25 +10,17 @@ const Navbar = () => {
     const navigate = useNavigate();
     const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
 
-    const handleLogout = () => {
-        signOut(auth).then(() => {
-            // Sign-out successful.
-                setIsLoggedIn(false);
-                navigate("/");
-                console.log("Signed out successfully")
-            }).catch((error) => {
-                console.log("Error signing out: ", error);
-            });
-    }
-
+    
     // listen for changes in auth state (whether the user is logged in or logged out)
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setIsLoggedIn(true); // user is signed in
+                console.log("User is logged in");
             }
             else {
                 setIsLoggedIn(false); // user is signed out
+                console.log("User is not logged in");
             }
         });
         return () => unsubscribe(); // Clean up the listener when the component is unmounted
@@ -75,21 +67,18 @@ const Navbar = () => {
                     </ul>
 
                     
-                    {/* Display either Log In or Log out button based on login status */}
+                    {/* Display either Log In or profile icon dropdown based on login status */}
                     
-                    {!isLoggedIn ? (
-                        <Link to="/login">
+                    {isLoggedIn ? (
+                        <ProfileDropDown setIsLoggedIn={setIsLoggedIn} navigate={navigate}/>
+                        ) : (
+
+                            <Link to="/login">
                             <button className='mr-[30px] bg-white  hover:bg-gray-200 text-[#0A142F] rounded h-10 w-20'>
                                 Log in
                             </button>
                         </Link>
-                        ) : (
-                            <button 
-                                className='mr-[30px] bg-white  hover:bg-gray-200 text-[#0A142F] rounded h-10 w-20'
-                                onClick={handleLogout}
-                            >
-                                Logout
-                            </button>
+                           
                         )
     
                     }
@@ -143,4 +132,71 @@ const Navbar = () => {
   )
 }
 
+
+const ProfileDropDown =  ( { setIsLoggedIn, navigate}) => {
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleDropDown = () => {
+        setIsOpen(!isOpen);
+    }
+
+    const handleLogout = () => {
+        signOut(auth).then(() => {
+            // Sign-out successful.
+                setIsLoggedIn(false);
+                navigate("/");
+                console.log("Signed out successfully")
+            }).catch((error) => {
+                console.log("Error signing out: ", error);
+            });
+    }
+   
+
+    return (
+
+        <div>
+
+            {/*/ profile icon */}
+        
+            <div 
+                onClick={toggleDropDown}
+                className=" mr-[30px] relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                <svg className="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd">
+                    </path>
+                </svg>
+            </div>
+
+            {/* Dropdown menu */}
+            {isOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-50">
+                    <a  href="#" 
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                        Edit Profile
+                    </a>
+                    <a  href="#"
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                        Saved Recipes
+                    </a>
+                    <button 
+                        className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+                        onClick={handleLogout} 
+                    >
+                        Logout
+                    </button>
+                    
+                </div>
+
+            )}
+
+    
+                
+            
+         
+
+        </div>
+    )
+
+};
 export default Navbar;
