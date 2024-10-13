@@ -1,36 +1,42 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { auth } from '../firebase';
-import {Link, NavLink, useNavigate} from 'react-router-dom';
-import { createUserWithEmailAndPassword} from 'firebase/auth';
+import { Link, useNavigate} from 'react-router-dom';
+import { createUserWithEmailAndPassword, updateProfile} from 'firebase/auth';
  
 const Signup = () => {
 
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
     const onSubmit = async (e) => {
         e.preventDefault()
   
-        await createUserWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-              // Signed in
-              const user = userCredential.user;
-              console.log(user);
-              navigate("/login")
-              
-          })
-          .catch((error) => {
-              const errorCode = error.code;
-              const errorMessage = error.message;
-              setErrorMessage(errorMessage);
-              console.log(errorCode, errorMessage);
-              
-          });
-  
-  
-      }
+        try {
+            
+            // create user with email and password
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+            const user = userCredential.user;
+
+            // update the user's profile with their display name
+            await updateProfile(user, {
+                displayName: name,
+            });
+
+            console.log(user);
+            navigate("/");
+        }
+
+        catch(error) {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            setErrorMessage(errorMessage);
+            console.log(errorCode, errorMessage);
+        }
+        
+    };
 
     return (
         <div>
@@ -42,24 +48,35 @@ const Signup = () => {
         <div className='flex flex-col items-center bg-gray-100 p-10 mx-20 rounded-mds'>
 
 
+
+            {/* Name Field */}
+            <div className='mb-4'>
+                <label htmlFor="name" className='font-medium text-gray-700 block'>Name</label>
+                <input 
+                    type="text" required
+                    placeholder='Enter your name'
+                    onChange={(e) => setName(e.target.value)}
+                    className='bg-white border border-gray-300 rounded-md shadow-sm p-2 '/> 
+
+            </div>
             {/* Email Field */}
             <div className='mb-4'>
-            <label htmlFor='email' className='font-medium text-gray-700 block'>Email</label>
-            <input 
-                type="email" required
-                placeholder='Enter your email' 
-                onChange={(e) => setEmail(e.target.value)}
-                className='bg-white border border-gray-300 rounded-md shadow-sm p-2 '/> 
+                <label htmlFor='email' className='font-medium text-gray-700 block'>Email</label>
+                <input 
+                    type="email" required
+                    placeholder='Enter your email' 
+                    onChange={(e) => setEmail(e.target.value)}
+                    className='bg-white border border-gray-300 rounded-md shadow-sm p-2 '/> 
             </div>
 
             {/* Password Field */}
             <div className='mb-4'>
-            <label htmlFor='password' className='font-medium text-gray-700 block'>Password</label>
-                <input 
-                type="password" required
-                placeholder='Enter your password' 
-                onChange={(e) => setPassword(e.target.value)}
-                className='bg-white border border-gray-300 rounded-md shadow-sm p-2'/> 
+                <label htmlFor='password' className='font-medium text-gray-700 block'>Password</label>
+                    <input 
+                    type="password" required
+                    placeholder='Enter your password' 
+                    onChange={(e) => setPassword(e.target.value)}
+                    className='bg-white border border-gray-300 rounded-md shadow-sm p-2'/> 
             </div>
 
             {/* Login Button */}

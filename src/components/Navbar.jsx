@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { onAuthStateChanged, signOut, getAuth } from 'firebase/auth';
 
 const Navbar = () => {
 
@@ -41,6 +41,7 @@ const Navbar = () => {
     // nav = false - the hamburger menu is closed, show the bars icon
     // nav = true - the fatimes icon is shown
 
+    
     return (
 
     <header className='w-full h-[80px] top-0 text-gray-100 bg-[#0A142F] '>
@@ -151,6 +152,10 @@ const ProfileDropDown =  ( { setIsLoggedIn, navigate}) => {
                 console.log("Error signing out: ", error);
             });
     }
+
+    // get display name of user
+    const auth = getAuth();
+    const user = auth.currentUser;
    
 
     return (
@@ -171,6 +176,13 @@ const ProfileDropDown =  ( { setIsLoggedIn, navigate}) => {
             {/* Dropdown menu */}
             {isOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-50">
+                    
+                    <a  href="#" 
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                        {user.displayName || 'User'}
+                        <hr/>
+                    </a>
+
                     <a  href="#" 
                         className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                         Edit Profile
