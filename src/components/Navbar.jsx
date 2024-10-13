@@ -3,6 +3,10 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
 import { onAuthStateChanged, signOut, getAuth } from 'firebase/auth';
+import { FaUser } from "react-icons/fa";
+import { GiPlainCircle } from "react-icons/gi";
+import { GoBookmarkFill } from 'react-icons/go';
+import { MdLogout } from "react-icons/md";
 
 const Navbar = () => {
 
@@ -177,25 +181,40 @@ const ProfileDropDown =  ( { setIsLoggedIn, navigate}) => {
             {isOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-50">
                     
-                    <a  href="#" 
-                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                        {user.displayName || 'User'}
+                    <button
+                    className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">
+                        <span className='flex items-center'>
+                            <GiPlainCircle className='mr-5' size={40}/>
+                            {user.displayName || 'User'}
+                        </span>
+                       
                         <hr/>
-                    </a>
+                    </button>
 
                     <a  href="#" 
                         className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                        Edit Profile
+                        <span className='flex items-center' >
+                            <FaUser className='mr-5 ml-2' size={20}/>
+                            Edit Profile
+                        </span>
                     </a>
                     <a  href="#"
                         className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                        Saved Recipes
+                        <span className='flex items-center'>
+                            <GoBookmarkFill className='mr-5 ml-2' size={20}/>
+                            Saved Recipes
+                        </span>
+                       
                     </a>
                     <button 
                         className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
                         onClick={handleLogout} 
                     >
-                        Logout
+                        <span className='flex items-center'>
+                            <MdLogout className='mr-5 ml-2' size={20} />
+                            Logout
+                        </span>
+                        
                     </button>
                     
                 </div>
