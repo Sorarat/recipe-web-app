@@ -191,21 +191,22 @@ const ProfileDropDown =  ( { setIsLoggedIn, navigate}) => {
                         <hr/>
                     </button>
 
-                    <a  href="#" 
+                    <Link to="/edit-profile"
                         className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                         <span className='flex items-center' >
                             <FaUser className='mr-5 ml-2' size={20}/>
                             Edit Profile
                         </span>
-                    </a>
-                    <a  href="#"
+                    </Link>
+
+                    <Link to="/saved-recipes"
                         className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                         <span className='flex items-center'>
                             <GoBookmarkFill className='mr-5 ml-2' size={20}/>
                             Saved Recipes
                         </span>
                        
-                    </a>
+                    </Link>
                     <button 
                         className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
                         onClick={handleLogout} 

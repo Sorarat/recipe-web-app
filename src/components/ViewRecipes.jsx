@@ -15,7 +15,7 @@ const ViewRecipes = () => {
     }, [recipe]);
 
     return (
-        <div className="mt-[80px] p-6 bg-gray-100 md:ml-[100px] md:mr-[100px]">
+        <div className="mt-[80px] p-6 bg-blue-50 md:ml-[100px] md:mr-[100px]">
             <img className='w-full h-64 object-cover mt-4 rounded' src={recipe.image} alt={recipe.label} />
             <h1 className="text-3xl mt-10 font-bold">{recipe.label}</h1>
 

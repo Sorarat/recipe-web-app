@@ -7,6 +7,8 @@ import Explore from "./components/Explore";
 import ViewRecipes from "./components/ViewRecipes";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import EditProfile from "./components/EditProfile";
+import SavedRecipes from "./components/SavedRecipes";
 
 function App() {
   
@@ -20,6 +22,8 @@ function App() {
         <Route path="/view-recipes" element={<ViewRecipes/>} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
+        <Route path="edit-profile" element={<EditProfile/>}/>
+        <Route path="saved-recipes" element={<SavedRecipes/>}/>
       </Routes>
     </Router>
   );
