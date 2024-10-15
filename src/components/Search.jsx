@@ -1,13 +1,53 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {APP_ID, APP_KEY} from '../config';
-import {Link} from 'react-router-dom';
 import RecipeCard from './RecipeCard';
+import { saveFavoriteRecipe } from '../firestoreService';
+import { getAuth } from 'firebase/auth';
+
 
 const Search = () => {
 
     const [query, setQuery] = useState("");
     const [searchResults, setSearchResults] = useState([]);
+    const [favorites, setFavorites] = useState([]);
+    const [userId, setUserId] = useState(null);
+
+
+    useEffect(() => {
+
+        // fetch userId from firebase auth
+        const auth = getAuth();
+        const user = auth.currentUser;
     
+        if (user) {
+          console.log("User ID:", user.uid); // Log userId to confirm it's correct
+          setUserId(user.uid);
+        }
+        else {
+          console.log('User is not logged in');
+        }
+    
+    }, []);
+
+    // function to handle saving a favorite recipe
+    const handleFavorite = (recipe) => {
+        
+        if (userId) {
+        setFavorites((prevFavorites) => [...prevFavorites, recipe]);
+
+        console.log(userId)
+        // call firestore function to save favorite
+        saveFavoriteRecipe(userId, recipe)
+            .then(() => console.log('Favorite recipe saved!'))
+            .catch((error) => console.error('Error saving favorite: ', error));
+        
+        }
+
+        else {
+        console.error('User not logged in, cannot save favorite');
+        }
+    };
+        
     const handleSearch = async () => {
 
         if (query) {
@@ -57,14 +97,15 @@ const Search = () => {
         <div className='flex flex-wrap lg:flex-nowrap gap-4 pt-20'>
             {searchResults.slice(0, 5).map((result, index) => (
                 <div key={index} className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2'>
-                    <Link to="/view-recipes" state={{ recipe: result.recipe}}>
                     <RecipeCard
+                        key={result.recipe.label}
                         title={result.recipe.label}
                         calories={Math.ceil(result.recipe.calories)}
                         image={result.recipe.image}
                         className="w-full h-full"
+                        recipe={result.recipe}
+                        onFavorite={() => handleFavorite(result.recipe)}
                     />
-                    </Link>
                 </div>
             ))}
         </div>

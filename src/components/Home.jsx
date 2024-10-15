@@ -4,13 +4,29 @@ import Hero from './Hero';
 import Categories from './Categories';
 import RecipeCard from './RecipeCard';
 import { APP_ID, APP_KEY } from '../config';
+import { saveFavoriteRecipe } from '../firestoreService';
+import { getAuth } from 'firebase/auth';
 
 const Home = () => {
 
-
   const [preFetchedRecipes, setPreFetchedRecipes] = useState([]);
+  const [favorites, setFavorites] = useState([]);
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
+
+    // fetch userId from firebase auth
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (user) {
+      console.log("User ID:", user.uid); // Log userId to confirm it's correct
+      setUserId(user.uid);
+    }
+    else {
+      console.log('User is not logged in');
+    }
+
     // Fetch pre-fetched recipes when the component mounts
     console.log('Component mounted. Fetching prefetched recipes...');
     const preFetchedRecipes = ['Spaghetti Carbonara', 'chocolate cake', 'noodles', 'fish and chips'];
@@ -37,8 +53,26 @@ const Home = () => {
     }
   };
 
-  
+  // function to handle saving a favorite recipe
+  const handleFavorite = (recipe) => {
+    
+    if (userId) {
+      setFavorites((prevFavorites) => [...prevFavorites, recipe]);
 
+      console.log(userId)
+      // call firestore function to save favorite
+      saveFavoriteRecipe(userId, recipe)
+        .then(() => console.log('Favorite recipe saved!'))
+        .catch((error) => console.error('Error saving favorite: ', error));
+    
+    }
+
+    else {
+      console.error('User not logged in, cannot save favorite');
+    }
+  };
+
+  
   return (
     <div>
       <Hero />
@@ -51,15 +85,15 @@ const Home = () => {
       <div className="flex flex-wrap lg:flex-nowrap gap-4 p-4">
         {preFetchedRecipes.slice(0, 4).map(recipe => (
           <div key={recipe.recipe.label} className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2'>
-            <Link to="/view-recipes" state={{ recipe: recipe.recipe}} > 
             <RecipeCard 
               key={recipe.recipe.label}
               title={recipe.recipe.label}
               calories={Math.ceil(recipe.recipe.calories)}
               image={recipe.recipe.image}
               className="w-full h-full"
+              recipe={recipe.recipe}
+              onFavorite={() => handleFavorite(recipe.recipe)}
             />
-            </Link>
           </div>
         ))}
       </div>

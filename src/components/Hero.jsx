@@ -80,7 +80,7 @@ const Hero = () => {
             <div className='mt-20'>
               {/* Pass the recipe data to the ViewRecipe page */}
               <Link to="/view-recipes" state={{ recipe: currentRecipe }}>
-                  <button className='bg-gray-300 p-3 rounded-md text-gray-900 text-md font-medium'>
+                  <button className='bg-gray-300 p-3 rounded-md text-gray-900 text-md font-medium hover:bg-gray-100 hover:text-gray-900 transition duration-300 ease-in-out'>
                     View Recipes
                   </button>
               </Link>
