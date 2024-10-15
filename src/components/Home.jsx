@@ -4,28 +4,16 @@ import Hero from './Hero';
 import Categories from './Categories';
 import RecipeCard from './RecipeCard';
 import { APP_ID, APP_KEY } from '../config';
-import { saveFavoriteRecipe } from '../firestoreService';
-import { getAuth } from 'firebase/auth';
+import useAuth from '../hooks/useAuth';
+import useFavorites from '../hooks/useFavorites';
 
 const Home = () => {
 
   const [preFetchedRecipes, setPreFetchedRecipes] = useState([]);
-  const [favorites, setFavorites] = useState([]);
-  const [userId, setUserId] = useState(null);
+  const userId = useAuth();
+  const {favorites, handleFavorite} =  useFavorites(userId);
 
   useEffect(() => {
-
-    // fetch userId from firebase auth
-    const auth = getAuth();
-    const user = auth.currentUser;
-
-    if (user) {
-      console.log("User ID:", user.uid); // Log userId to confirm it's correct
-      setUserId(user.uid);
-    }
-    else {
-      console.log('User is not logged in');
-    }
 
     // Fetch pre-fetched recipes when the component mounts
     console.log('Component mounted. Fetching prefetched recipes...');
@@ -53,24 +41,6 @@ const Home = () => {
     }
   };
 
-  // function to handle saving a favorite recipe
-  const handleFavorite = (recipe) => {
-    
-    if (userId) {
-      setFavorites((prevFavorites) => [...prevFavorites, recipe]);
-
-      console.log(userId)
-      // call firestore function to save favorite
-      saveFavoriteRecipe(userId, recipe)
-        .then(() => console.log('Favorite recipe saved!'))
-        .catch((error) => console.error('Error saving favorite: ', error));
-    
-    }
-
-    else {
-      console.error('User not logged in, cannot save favorite');
-    }
-  };
 
   
   return (
