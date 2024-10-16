@@ -29,7 +29,7 @@ const Categories = () => {
         
         {/* Title & Button */}
         <div className='flex justify-between'>
-            <div className='mb-6'>
+            <div className='mb-10'>
                 <h3 className='text-3xl font-semibold'>Categories</h3>
             </div>
 

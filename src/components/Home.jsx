@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Hero from './Hero';
 import Categories from './Categories';
 import RecipeCard from './RecipeCard';
 import { APP_ID, APP_KEY } from '../config';
 import useAuth from '../hooks/useAuth';
 import useFavorites from '../hooks/useFavorites';
+import Footer from './Footer';
 
 const Home = () => {
 
@@ -48,8 +48,8 @@ const Home = () => {
       <Hero />
       <Categories />
       
-      <div className='pt-20 mb-6 md:mr-[100px]  md:ml-[100px]'>
-        <h3 className='text-3xl font-semibold'>You May Like</h3>
+      <div className='pt-20 mb-40 md:mr-[100px]  md:ml-[100px] '>
+        <h3 className='text-3xl font-semibold mb-5 mt-20'>You May Like</h3>
         
       {/* Display fetched recipes */}
       <div className="flex flex-wrap lg:flex-nowrap gap-4 p-4">
@@ -68,6 +68,11 @@ const Home = () => {
         ))}
       </div>
       </div>
+
+      {/* You May Like */}
+      <Footer/>
+
+
     </div>
   );
 }
