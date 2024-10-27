@@ -18,7 +18,7 @@ const Footer = () => {
 
 
     return (
-        <div className='bg-[#0A142F] h-[180px]'>
+        <div className='bg-[#1B0558] h-[180px]'>
 
             <div className='flex'>
 

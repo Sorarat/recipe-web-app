@@ -66,21 +66,21 @@ const Hero = () => {
   const currentRecipe = featuredRecipes[currentRecipeIndex];
 
   return (
-    <div className='mt-[80px] h-[500px] bg-[#0A142F] flex flex-row items-center justify-evenly shadow-md pl-40  md:mr-[100px]  md:ml-[100px] md:rounded-lg'>
+    <div className='mt-[80px] h-[500px] bg-[#DEDCFF] bg-opacity-75 flex flex-row items-center justify-evenly shadow-md pl-40  md:mr-[100px]  md:ml-[100px] md:rounded-lg'>
 
         {/* left side */}
         <div className='flex flex-col items-centers pr-5 mr-10'  style={{ width: '35%' }} >
-            <h3 className='text-gray-200 text-5xl font-semibold'>{currentRecipe.label}</h3>
+            <h3 className='text-gray-900 text-5xl font-semibold'>{currentRecipe.label}</h3>
             <br />
             <div>
-                <p className='text-gray-200 text-xl'>Calories: {Math.ceil(currentRecipe.calories)}</p>
+                <p className='text-gray-900 text-xl'>Calories: {Math.ceil(currentRecipe.calories)}</p>
             </div> 
 
             
             <div className='mt-20'>
               {/* Pass the recipe data to the ViewRecipe page */}
               <Link to="/view-recipes" state={{ recipe: currentRecipe }}>
-                  <button className='bg-gray-300 p-3 rounded-md text-gray-900 text-md font-medium hover:bg-gray-100 hover:text-gray-900 transition duration-300 ease-in-out'>
+                  <button className='bg-gray-100 p-3 rounded-md text-gray-900 text-md font-medium hover:bg-gray-300 hover:text-gray-900 transition duration-300 ease-in-out'>
                     View Recipes
                   </button>
               </Link>

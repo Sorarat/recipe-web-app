@@ -65,7 +65,7 @@ const Login = () => {
         {/* Login Button */}
         <div>
           <button 
-            className='bg-[#0A142F] text-gray-100 p-2 rounded-md w-[195px] hover:bg-[#1B2A56] hover:text-white transition duration-300 ease-in-out'
+            className='bg-[#1B0558] text-gray-100 p-2 rounded-md w-[195px] hover:bg-[#1B0558] bg-opacity-90 hover:text-white transition duration-300 ease-in-out'
             onClick={onLogin}
             >Login</button>
             

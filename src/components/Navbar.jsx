@@ -48,25 +48,25 @@ const Navbar = () => {
     
     return (
 
-    <header className='w-full h-[80px] top-0 text-gray-100 bg-[#0A142F] '>
+    <header className='w-full h-[60px] top-0 text-gray-00 bg-gray-50 '>
         
         <div className='flex justify-between items-center h-full px-5 py-4'>
-            <div className='ml-9'>
-                    <img src="src/img/dark-logo.png" alt="logo" style={{height: '70px', width: '150px'}} />
+            <div className='ml-9 mt-9'>
+                    <img src="src/img/logo-test.png" alt="logo" style={{height: '145px', width: '150px'}} />
                 </div>
             <nav>
-                
+            
                 {/* Main menu */}
                 {/* if it's on small screen, the main menu won't show */}
                 <div className='hidden md:flex font-medium '>
                     <ul className='hidden md:flex '>
-                        <li className='mr-[15px] px-7 py-2 hover:border-b-4 border-white'>
+                        <li className='mr-[15px] px-7 py-2 text-[#0A142F] hover:bg-[#DEDCFF] rounded-md'>
                             <Link to="/">Home</Link>
                         </li>
-                        <li className='mr-[15px] px-7 py-2 hover:border-b-4 border-white'>
+                        <li className='mr-[15px] px-7 py-2 text-[#0A142F] hover:bg-[#DEDCFF] rounded-md'>
                             <Link to="/search">Search</Link>
                         </li>
-                        <li className='mr-[15px] px-7 py-2 hover:border-b-4 border-white'>
+                        <li className='mr-[15px] px-7 py-2 text-[#0A142F] hover:bg-[#DEDCFF] rounded-md'>
                             <Link to="/explore">Explore</Link>
                         </li>
                     </ul>
@@ -79,7 +79,7 @@ const Navbar = () => {
                         ) : (
 
                             <Link to="/login">
-                            <button className='mr-[30px] bg-white  hover:bg-gray-200 text-[#0A142F] rounded h-10 w-20'>
+                            <button className='mr-[30px] bg-[#433BFF] text-gray-300 rounded-md h-10 w-20 hover:text-gray-50 '>
                                 Log in
                             </button>
                         </Link>
@@ -99,21 +99,21 @@ const Navbar = () => {
 
                 {/* mobile menu */}
                 <ul className={!nav ? 'hidden': 'absolute top-0 left-0 w-full h-screen bg-[#0A142F] flex flex-col justify-center items-center'}>
-                    <li className='py-6 text-3xl'>
+                    <li className='py-6 text-3xl text-gray-50'>
                         <Link to="/" onClick={handleClick}>Home</Link>
                     </li>
-                    <li className='py-6 text-3xl'>
+                    <li className='py-6 text-3xl text-gray-50'>
                         <Link to="/search" onClick={handleClick}>Search</Link>
                     </li>
-                    <li className='py-6 text-3xl'>
+                    <li className='py-6 text-3xl text-gray-50'>
                         <Link to="/explore" onClick={handleClick}>Explore</Link>
                     </li>
                     {!isLoggedIn ? (
-                        <li className='py-6 text-3xl'>
+                        <li className='py-6 text-3xl text-gray-50'>
                             <Link to="/login" onClick={handleClick}>Log in </Link>
                         </li>
                     ) : (
-                        <li className='py-6 text-3xl'>
+                        <li className='py-6 text-3xl text-gray-50'>
                         <button onClick={() => { handleLogout(); handleClick(); }}>Log out</button>
                       </li>
                     )}
@@ -124,7 +124,7 @@ const Navbar = () => {
         </div>
 
         {/* horizontal line */}
-        <div className='w-full h-[2px] bg-gray-300'>
+        <div className='w-full h-[1px] bg-gray-200'>
         </div>
     
         

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {APP_ID, APP_KEY} from '../config';
 import RecipeCard from './RecipeCard';
 import useAuth from '../hooks/useAuth';
@@ -11,7 +11,7 @@ const Search = () => {
     const [query, setQuery] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const userId = useAuth();
-    const { favorites, handleFavorite, isFavorite } = useFavorites(userId);
+    const {handleFavorite, isFavorite } = useFavorites(userId);
 
         
     const handleSearch = async () => {

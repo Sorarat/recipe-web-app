@@ -30,10 +30,10 @@ const Categories = () => {
         {/* Title & Button */}
         <div className='flex justify-between'>
             <div className='mb-10'>
-                <h3 className='text-3xl font-semibold'>Categories</h3>
+                <h3 className='text-3xl font-semibold bg-[#DEDCFF] p-3 rounded-md'>Categories</h3>
             </div>
 
-            <div className='bg-pink-100 flex px-4 mb-2 rounded-md hover:bg-pink-400'>
+            <div className='bg-[#DEDCFF] flex px-4 mb-9 rounded-md hover:bg-[#DEDCFF] bg-opacity-55'>
                 <button onClick={goToExplore}>View All</button>
             </div>
 

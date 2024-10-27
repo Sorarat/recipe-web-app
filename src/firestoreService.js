@@ -23,21 +23,37 @@ export const saveFavoriteRecipe = async (userId, recipe) => {
 }
 
 export const getFavoriteRecipes = async (userId) => {
-    const favoriteRef = doc(db, "users", userId, "favorites");
-    const querySnapshot = await getDocs(favoriteRef);
-    const recipes = [];
+    console.log('Fetching favorites for userId:', userId); // Debug log
+    const favoriteRef = collection(db, "users", userId, "favorites");
 
-    querySnapshot.forEach((doc) => {
-        recipes.push(doc.data());
-    });
+    try {
+        
+        const querySnapshot = await getDocs(favoriteRef);
+        console.log('Favorites Snapshot:', querySnapshot); // Log the snapshot
+        console.log('Number of documents in favorites:', querySnapshot.size);
 
-    if (recipes.length > 0) {
-        return recipes;
+        const recipes = [];
+
+        querySnapshot.forEach((doc) => {
+            console.log('Document Id:', doc.id, 'Data:', doc.data());
+            recipes.push({id: doc.id, ...doc.data()});
+        });
+
+        if (recipes.length > 0) {
+            return recipes;
+        }
+        else {
+            console.log("No favorites found!");
+            return [];
+        }
+
     }
-    else {
-        console.log("No favorites found!");
-        return [];
+
+    catch (error) {
+        console.error('Error fetching favorite recipes: ', error);
+        throw error;
     }
+    
    
 };
 

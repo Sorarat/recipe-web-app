@@ -11,7 +11,7 @@ const Home = () => {
 
   const [preFetchedRecipes, setPreFetchedRecipes] = useState([]);
   const userId = useAuth();
-  const {favorites, handleFavorite, isFavorite} =  useFavorites(userId);
+  const {handleFavorite, isFavorite} =  useFavorites(userId);
 
   useEffect(() => {
 
@@ -49,9 +49,11 @@ const Home = () => {
       <Categories />
       
       <div className='pt-20 mb-40 md:mr-[100px]  md:ml-[100px] '>
-        <h3 className='text-3xl font-semibold mb-5 mt-20'>You May Like</h3>
-        
-      {/* Display fetched recipes */}
+        <div className='bg-[#DEDCFF] p-3 rounded-md w-[220px] mt-16'>
+          <h3 className='text-3xl font-semibold'>You May Like</h3>
+        </div>
+
+       {/* Display fetched recipes */}
       <div className="flex flex-wrap lg:flex-nowrap gap-4 p-4">
         {preFetchedRecipes.slice(0, 4).map(recipe => (
           <div key={recipe.recipe.label} className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2'>

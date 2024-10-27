@@ -9,7 +9,7 @@ const RecipeCard = ({ title, calories, image, className, onFavorite, recipe, isF
   const [isHovered, setIsHovered] = useState(false);
   
   return (
-    <div className={`flex flex-col rounded-lg shadow-lg overflow-hidden bg-pink-100 ${className}`}>
+    <div className={`flex flex-col rounded-lg shadow-lg overflow-hidden bg-gray-50 ${className} hover:bg-gray-200`}>
       
       {/* image section */}
       <div className="relative">
