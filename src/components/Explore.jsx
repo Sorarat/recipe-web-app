@@ -18,7 +18,7 @@ const Explore = () => {
   const categoryFromUrl = query.get('category');
 
   const userId = useAuth();
-  const { favorites, handleFavorite } = useFavorites(userId);
+  const { favorites, handleFavorite , isFavorite} = useFavorites(userId);
 
 
 
@@ -180,6 +180,7 @@ const Explore = () => {
                             className="w-full h-full"
                             recipe={recipe.recipe}
                             onFavorite={() => handleFavorite(recipe.recipe)}
+                            isFavorite={isFavorite(recipe.recipe)} //pass favorite status
                           />
                       ))}
 

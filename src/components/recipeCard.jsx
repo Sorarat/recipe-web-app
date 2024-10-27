@@ -4,7 +4,7 @@ import { AiFillHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 
-const RecipeCard = ({ title, calories, image, className, onFavorite, recipe}) => {
+const RecipeCard = ({ title, calories, image, className, onFavorite, recipe, isFavorite}) => {
 
   const [isHovered, setIsHovered] = useState(false);
   
@@ -20,14 +20,15 @@ const RecipeCard = ({ title, calories, image, className, onFavorite, recipe}) =>
       {/* heart icon */}
         <button
           onClick={(e) => {
-            e.stopPropagation(); // prevent navigation
+            e.stopPropagation(); // Prevent navigation when clicking the heart icon
             onFavorite();
           }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className="absolute top-2 right-2 text-gray-100  hover:text-white-100 transition duration-200">
-            
-            {isHovered ? (
+          className="absolute top-2 right-2 text-gray-100  hover:text-white-100 transition duration-200"
+          aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"} // Accessibility 
+          >
+            {isFavorite || isHovered ? (
               <AiFillHeart className="h-8 w-8"/>
             ) : (
               <AiOutlineHeart className="h-8 w-8 stroke-[1.5]"/>

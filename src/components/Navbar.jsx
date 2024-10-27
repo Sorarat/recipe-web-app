@@ -106,7 +106,7 @@ const Navbar = () => {
                         <Link to="/search" onClick={handleClick}>Search</Link>
                     </li>
                     <li className='py-6 text-3xl'>
-                        <Link to="/search" onClick={handleClick}>Explore</Link>
+                        <Link to="/explore" onClick={handleClick}>Explore</Link>
                     </li>
                     {!isLoggedIn ? (
                         <li className='py-6 text-3xl'>

@@ -11,7 +11,7 @@ const Search = () => {
     const [query, setQuery] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const userId = useAuth();
-    const { favorites, handleFavorite } = useFavorites(userId);
+    const { favorites, handleFavorite, isFavorite } = useFavorites(userId);
 
         
     const handleSearch = async () => {
@@ -81,6 +81,7 @@ const Search = () => {
                                 className="w-full h-full"
                                 recipe={result.recipe}
                                 onFavorite={() => handleFavorite(result.recipe)}
+                                isFavorite={isFavorite(result.recipe)} //pass favorite status
                             />
                         </div>
                     ))}

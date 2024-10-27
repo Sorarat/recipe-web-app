@@ -11,7 +11,7 @@ const Home = () => {
 
   const [preFetchedRecipes, setPreFetchedRecipes] = useState([]);
   const userId = useAuth();
-  const {favorites, handleFavorite} =  useFavorites(userId);
+  const {favorites, handleFavorite, isFavorite} =  useFavorites(userId);
 
   useEffect(() => {
 
@@ -63,13 +63,14 @@ const Home = () => {
               className="w-full h-full"
               recipe={recipe.recipe}
               onFavorite={() => handleFavorite(recipe.recipe)}
+              isFavorite={isFavorite(recipe.recipe)} //pass favorite status
             />
           </div>
         ))}
       </div>
       </div>
 
-      {/* You May Like */}
+     
       <Footer/>
 
 

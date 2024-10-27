@@ -1,4 +1,4 @@
-import { getFirestore, doc, addDoc, getDocs, collection} from "firebase/firestore";
+import { getFirestore, doc, addDoc, getDocs, collection, deleteDoc} from "firebase/firestore";
 
 const db = getFirestore();
 
@@ -40,3 +40,23 @@ export const getFavoriteRecipes = async (userId) => {
     }
    
 };
+
+export const removeFavoriteRecipe = async (userId, recipe) => {
+
+    try {
+        const favoriteRef = collection(db, "users", userId, "favorites");
+        const recipeQuery = query(favoriteRef, where("uri", "===" , recipe.uri));
+        const querySnapshot = await getDocs(recipeQuery);
+
+        querySnapshot.forEach(async(doc) => {
+            await deleteDoc(doc.ref);
+        });
+
+        console.log('Recipe removed from favorites');
+    }
+
+    catch (error) {
+        console.error("Error removing recipe: ", error);
+
+    }
+}
