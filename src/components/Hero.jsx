@@ -10,7 +10,7 @@ const Hero = () => {
   
   useEffect(() => {
     const fetchFeaturedRecipe = async () => {
-      const dishes = ['Cookies', 'Salad', 'Seafood Pizza'];
+      const dishes = ['Spaghetti', 'Salad', 'Seafood Pizza'];
 
       try {
         const fetchedRecipes = await Promise.all(
@@ -69,7 +69,7 @@ const Hero = () => {
     <div className='mt-[80px] h-[500px] bg-[#0A142F] flex flex-row items-center justify-evenly shadow-md pl-40  md:mr-[100px]  md:ml-[100px] md:rounded-lg'>
 
         {/* left side */}
-        <div className='flex flex-col items-centers pr-5'  style={{ width: '50%' }} >
+        <div className='flex flex-col items-centers pr-5 mr-10'  style={{ width: '35%' }} >
             <h3 className='text-gray-200 text-5xl font-semibold'>{currentRecipe.label}</h3>
             <br />
             <div>
@@ -89,7 +89,7 @@ const Hero = () => {
         </div>
 
         {/* right side: pics */}
-        <div className='h-full bg-gray-400 flex items-center justify-end rounded-r-md' style={{ width: '50%' }}>
+        <div className='h-full bg-gray-400 flex items-center justify-end rounded-r-md' style={{ width: '65%' }}>
             <img 
               className='h-full object-cover w-full rounded-r-md'
               src={currentRecipe.image}
