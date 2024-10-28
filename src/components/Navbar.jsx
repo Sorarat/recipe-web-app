@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth } from '../firebase';
 import { onAuthStateChanged, signOut, getAuth } from 'firebase/auth';
 import { FaUser } from "react-icons/fa";
 import { GiPlainCircle } from "react-icons/gi";
 import { GoBookmarkFill } from 'react-icons/go';
 import { MdLogout } from "react-icons/md";
+import { fetchProfilePicUrl } from '../firestoreService';
 
 const Navbar = () => {
 
@@ -30,6 +30,32 @@ const Navbar = () => {
         return () => unsubscribe(); // Clean up the listener when the component is unmounted
 
     }, []);
+
+
+    const auth = getAuth();
+    const userId = auth.currentUser ? auth.currentUser.uid : null;
+    const [profilePicUrl, setProfilePicUrl ] = useState('');
+
+
+    // fetch user's profile picture URL on component mount
+    useEffect (() => {
+
+        const getProfilePic = async () => {
+
+            if (userId) {
+                const url = await fetchProfilePicUrl(userId);
+                console.log('Fetching profile picture for userId:', userId);
+                console.log('Profile picture URL:', profilePicUrl);
+
+                setProfilePicUrl(url);
+            }
+
+        };
+
+        getProfilePic();
+
+    }, [userId]);
+
 
 
 
@@ -171,10 +197,17 @@ const ProfileDropDown =  ( { setIsLoggedIn, navigate}) => {
             <div 
                 onClick={toggleDropDown}
                 className=" mr-[30px] relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
-                <svg className="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd">
-                    </path>
-                </svg>
+
+                {profilePicUrl ? (
+                    <img src={profilePicUrl} alt="Profile" className="absolute w-28 h-28 object-cover rounded-full" />
+                ) : (
+
+                    <svg className="absolute w-20 h-20 text-gray-400 ml-4 mt-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>
+                    </svg>
+
+                )}
+
             </div>
 
             {/* Dropdown menu */}

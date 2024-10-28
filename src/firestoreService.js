@@ -1,6 +1,5 @@
-import { getFirestore, doc, addDoc, getDocs, collection, deleteDoc} from "firebase/firestore";
-
-const db = getFirestore();
+import { db } from './firebase';
+import { doc, addDoc, getDocs, collection, deleteDoc, setDoc, getDoc} from "firebase/firestore";
 
 export const saveFavoriteRecipe = async (userId, recipe) => {
     try {
@@ -75,4 +74,55 @@ export const removeFavoriteRecipe = async (userId, recipe) => {
         console.error("Error removing recipe: ", error);
 
     }
+}
+
+
+
+export const uploadProfilePic = async (userId, profilePicUrl) => {
+
+    try {
+        const userRef = doc(db, "users", userId);
+
+        // save url under a field within the document
+        await setDoc(userRef, { profilePicUrl: profilePicUrl }, { merge: true });
+
+        console.log("Profile picture URL saved in firestore");
+
+    }
+
+    catch (error) {
+        console.error("Error saving profile picture UR:: ", error);
+    }
+}
+
+export const fetchProfilePicUrl = async (userId) => {
+
+    try {
+
+        // reference the user document 
+        const userRef = doc(db, "users", userId);
+
+        // fetch the document
+        const docSnapshot = await getDoc(userRef)
+
+        // check if document exists
+        if (docSnapshot) {
+            const profileUrl = docSnapshot.data().profilePicUrl;
+            return profileUrl;
+        }
+
+        else {
+            console.log("no such document");
+            return null;
+        }
+
+    }
+
+    catch(error) {
+        console.error("Error fetching profile picture: ", error);
+        throw error;
+
+    }
+
+
 }

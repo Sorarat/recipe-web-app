@@ -10,6 +10,7 @@ import Signup from "./components/Signup";
 import EditProfile from "./components/EditProfile";
 import SavedRecipes from "./components/SavedRecipes";
 import useAuth from "./hooks/useAuth";
+import EditProfilePic from "./components/EditProfilePic";
 
 function App() {
   const user_id = useAuth();
@@ -26,6 +27,7 @@ function App() {
         <Route path="/signup" element={<Signup/>}/>
         <Route path="edit-profile" element={<EditProfile/>}/>
         <Route path="saved-recipes" element={<SavedRecipes userId={user_id}/>}/>
+        <Route path="/edit-pic" element={<EditProfilePic/>}></Route>
       </Routes>
     </Router>
   );
