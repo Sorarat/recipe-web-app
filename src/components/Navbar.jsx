@@ -34,32 +34,7 @@ const Navbar = () => {
 
     const auth = getAuth();
     const userId = auth.currentUser ? auth.currentUser.uid : null;
-    const [profilePicUrl, setProfilePicUrl ] = useState('');
-
-
-    // fetch user's profile picture URL on component mount
-    useEffect (() => {
-
-        const getProfilePic = async () => {
-
-            if (userId) {
-                const url = await fetchProfilePicUrl(userId);
-                console.log('Fetching profile picture for userId:', userId);
-                console.log('Profile picture URL:', profilePicUrl);
-
-                setProfilePicUrl(url);
-            }
-
-        };
-
-        getProfilePic();
-
-    }, [userId]);
-
-
-
-
-
+    
 
     const [nav, setNav] = useState(false);
 
@@ -186,7 +161,27 @@ const ProfileDropDown =  ( { setIsLoggedIn, navigate}) => {
     // get display name of user
     const auth = getAuth();
     const user = auth.currentUser;
-   
+    const userId = user.uid;
+    const [profilePicUrl, setProfilePicUrl ] = useState('');
+
+    // fetch user's profile picture URL on component mount
+    useEffect (() => {
+
+        const getProfilePic = async () => {
+
+            if (userId) {
+                const url = await fetchProfilePicUrl(userId);
+                console.log('Fetching profile picture for userId:', userId);
+                console.log('Profile picture URL:', profilePicUrl);
+
+                setProfilePicUrl(url);
+            }
+
+        };
+
+        getProfilePic();
+
+    }, [userId]);
 
     return (
 
@@ -218,6 +213,13 @@ const ProfileDropDown =  ( { setIsLoggedIn, navigate}) => {
                     className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">
                         <span className='flex items-center'>
                             <GiPlainCircle className='mr-5' size={40}/>
+                            {profilePicUrl ? (
+                                <img src={profilePicUrl} alt="Profile" className="absolute w-10 h-10 object-cover rounded-full" />
+                            ) : (
+
+                                <GiPlainCircle className='mr-5' size={40}/>
+
+                            )}
                             {user.displayName || 'User'}
                         </span>
                        
