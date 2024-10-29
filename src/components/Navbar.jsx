@@ -93,13 +93,17 @@ const Navbar = () => {
                 
 
                 {/* hamburger */}
-                <div onClick={handleClick} className='md:hidden z-10 cursor-pointer'>
-                    {!nav ? <FaBars size={30}/> : <FaTimes size={30}/>}
-                    {/* <FaBars/> */}
+                <div onClick={handleClick} className='md:hidden z-10 cursor-pointer fixed '>
+                    {!nav ? <FaBars className='text-gray-800'/> : <FaTimes className='text-gray-200'/>} 
                 </div>
 
+                 
+
                 {/* mobile menu */}
-                <ul className={!nav ? 'hidden': 'absolute top-0 left-0 w-full h-screen bg-[#0A142F] flex flex-col justify-center items-center'}>
+                <ul className={
+                    !nav 
+                        ? 'hidden'
+                        : 'absolute top-0 left-0 w-full h-screen bg-[#0A142F] flex flex-col justify-center items-center'}>
                     <li className='py-6 text-3xl text-gray-50'>
                         <Link to="/" onClick={handleClick}>Home</Link>
                     </li>
