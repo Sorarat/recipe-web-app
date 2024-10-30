@@ -18,7 +18,7 @@ const Footer = () => {
 
 
     return (
-        <div className='bg-[#1B0558] h-[180px]'>
+        <div className='w-full bg-[#1B0558] h-[180px]'>
 
             <div className='flex'>
 

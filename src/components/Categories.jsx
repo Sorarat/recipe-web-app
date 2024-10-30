@@ -25,7 +25,9 @@ const Categories = () => {
     }
 
   return (
-    <div className='mt-[100px] h-[200px] bg-whie flex flex-col md:mr-[100px]  md:ml-[100px] '>
+    <div className='w-full h-screen mt-[100px] bg-whie flex flex-col md:mr-[100px]  md:ml-[100px] '>
+
+    {/* <div className='mt-[100px] h-[200px] bg-whie flex flex-col md:mr-[100px]  md:ml-[100px] '> */}
         
         {/* Title & Button */}
         <div className='flex justify-between'>

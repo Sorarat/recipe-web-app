@@ -66,7 +66,10 @@ const Hero = () => {
   const currentRecipe = featuredRecipes[currentRecipeIndex];
 
   return (
-    <div className='mt-[80px] h-[500px] bg-[#DEDCFF] bg-opacity-75 flex flex-row items-center justify-evenly shadow-md pl-40  md:mr-[100px]  md:ml-[100px] md:rounded-lg'>
+    <div className='w-full h-screen mt-[80px] bg-[#DEDCFF] bg-opacity-75 flex flex-row items-center justify-evenly shadow-md pl-40  md:mr-[100px]  md:ml-[100px] md:rounded-lg'>
+
+
+    {/* <div className='mt-[80px] h-[500px] bg-[#DEDCFF] bg-opacity-75 flex flex-row items-center justify-evenly shadow-md pl-40  md:mr-[100px]  md:ml-[100px] md:rounded-lg'> */}
 
         {/* left side */}
         <div className='flex flex-col items-centers pr-5 mr-10'  style={{ width: '35%' }} >

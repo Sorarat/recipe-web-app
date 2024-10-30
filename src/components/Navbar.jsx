@@ -49,7 +49,7 @@ const Navbar = () => {
     
     return (
 
-    <header className='w-full h-[60px] top-0 text-gray-00 bg-gray-50 '>
+    <header className='fixed w-full h-[60px] top-0 text-gray-00 bg-gray-50 '>
         
         <div className='flex justify-between items-center h-full px-5 py-4'>
             <div className='ml-9 mt-9'>
