@@ -3,12 +3,12 @@ import CategoriesCard from './CategoriesCard'
 import { useNavigate } from 'react-router-dom';
 
 // Import images
-import breakfastImage from  'public/img/1.png';
-import lunchImage from 'public/img/2.png';
-import dinnerImage from 'public/img/3.png';
-import asianImage from 'public/img/5.png';
-import americanImage from 'pulic/img/6.png';
-import mediterraneanImage from 'public/img/7.png';
+import breakfastImage from  'img/1.png';
+import lunchImage from 'img/2.png';
+import dinnerImage from 'img/3.png';
+import asianImage from 'img/5.png';
+import americanImage from 'img/6.png';
+import mediterraneanImage from 'img/7.png';
 
 
 const Categories = () => {
