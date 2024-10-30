@@ -2,15 +2,24 @@ import React from 'react'
 import CategoriesCard from './CategoriesCard'
 import { useNavigate } from 'react-router-dom';
 
+// Import images
+import breakfastImage from 'src/img/1.png';
+import lunchImage from 'src/img/2.png';
+import dinnerImage from 'src/img/3.png';
+import asianImage from 'src/img/5.png';
+import americanImage from 'src/img/6.png';
+import mediterraneanImage from 'src/img/7.png';
+
+
 const Categories = () => {
 
     const categories = [
-        { title: 'Breakfast', image: 'src/img/1.png'},
-        { title: 'Lunch', image: 'src/img/2.png'},
-        { title: 'Dinner', image: 'src/img/3.png'},
-        { title: 'Asian', image: 'src/img/5.png'},
-        { title: 'American', image: 'src/img/6.png'},
-        { title: 'Mediterranean', image: 'src/img/7.png'},
+        { title: 'Breakfast', image: breakfastImage},
+        { title: 'Lunch', image: lunchImage},
+        { title: 'Dinner', image: dinnerImage},
+        { title: 'Asian', image: asianImage},
+        { title: 'American', image: americanImage},
+        { title: 'Mediterranean', image: mediterraneanImage},
 
     ]
 
