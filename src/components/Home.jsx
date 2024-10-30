@@ -41,47 +41,44 @@ const Home = () => {
     }
   };
 
-
-  
   return (
-    <div>
+    <div className='overflow-x-hidden'>
       <Hero />
       <Categories />
-      
-      {/* <div className='max-w-screen-lg mx-auto p-4'> */}
-      <div className='w-full h-screen'>
-      {/* <div className='w-full h-screen pt-20 mb-40 md:mr-[100px]  md:ml-[100px] '> */}
-
-        <div className='bg-[#DEDCFF] p-3 rounded-md max-w-xs mx-auto md:max-w-none mt-32 mb-6 '>
-          <h3 className='text-2xl md:text-3xl font-semibold '>You May Like</h3>
+  
+      <div className='bg-blue-100 w-full md:flex flex-col items-center md:mx-24 md:mt-10 md:mb-10' >
+  
+        {/* Title */}
+        <div className='w-full max-w-screen-lg flex justify-start mb-4 px-4 md:px-0'>
+          <h3 className='text-2xl md:text-3xl font-semibold bg-[#DEDCFF] p-3 rounded-md'>You May Like</h3>
         </div>
-
-       {/* Display fetched recipes */}
-        <div className="flex flex-wrap gap-4 p-4 justify-center md:justify-start lg:flex-nowrap">
+  
+        {/* Display fetched recipes */}
+        <div className="flex flex-wrap justify-center md:justify-between gap-4 p-4 md:space-x-4">
           {preFetchedRecipes.slice(0, 4).map(recipe => (
-            <div key={recipe.recipe.label} className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2 flex-shrink-0'>
+            <div 
+              key={recipe.recipe.label} 
+              className='w-full sm:w-1/2 md:w-1/5 p-2 flex-shrink-0'
+            >
               <RecipeCard 
-                key={recipe.recipe.label}
                 title={recipe.recipe.label}
                 calories={Math.ceil(recipe.recipe.calories)}
                 image={recipe.recipe.image}
                 className="w-full h-full"
                 recipe={recipe.recipe}
                 onFavorite={() => handleFavorite(recipe.recipe)}
-                isFavorite={isFavorite(recipe.recipe)} //pass favorite status
+                isFavorite={isFavorite(recipe.recipe)} // pass favorite status
               />
             </div>
           ))}
         </div>
-
       </div>
-
-     
-      <Footer/>
-
-
+  
+      <Footer />
     </div>
   );
+  
+  
 }
 
 export default Home;
