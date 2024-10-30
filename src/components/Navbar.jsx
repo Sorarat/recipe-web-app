@@ -53,7 +53,7 @@ const Navbar = () => {
         
         <div className='flex justify-between items-center h-full px-5 py-4'>
             <div className='ml-9 mt-9'>
-                    <img src="src/img/logo-test.png" alt="logo" style={{height: '145px', width: '150px'}} />
+                    <img src="../assets/logo-test.png" alt="logo" style={{height: '145px', width: '150px'}} />
                 </div>
             <nav>
             

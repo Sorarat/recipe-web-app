@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom';
 
 // Import images
 import breakfastImage from '../assets/1.png';
-import lunchImage from '../assets/1.png';
-import dinnerImage from '../assets/1.png';
-import asianImage from '../assets/1.png';
-import americanImage from '../assets/1.png';
-import mediterraneanImage from '../assets/1.png';
+import lunchImage from '../assets/2.png';
+import dinnerImage from '../assets/3.png';
+import asianImage from '../assets/5.png';
+import americanImage from '../assets/6.png';
+import mediterraneanImage from '../assets/7.png';
 
 
 
