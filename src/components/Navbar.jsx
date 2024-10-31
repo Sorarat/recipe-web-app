@@ -7,6 +7,7 @@ import { GiPlainCircle } from "react-icons/gi";
 import { GoBookmarkFill } from 'react-icons/go';
 import { MdLogout } from "react-icons/md";
 import { fetchProfilePicUrl } from '../firestoreService';
+import Logo from  "../assets/logo-test.png";
 
 const Navbar = () => {
 
@@ -33,7 +34,6 @@ const Navbar = () => {
 
 
     const auth = getAuth();
-    const userId = auth.currentUser ? auth.currentUser.uid : null;
     
 
     const [nav, setNav] = useState(false);
@@ -53,7 +53,7 @@ const Navbar = () => {
         
         <div className='flex justify-between items-center h-full px-5 py-4'>
             <div className='ml-9 mt-9'>
-                    <img src="../assets/logo-test.png" alt="logo" style={{height: '145px', width: '150px'}} />
+                    <img src={Logo} alt="logo" style={{height: '145px', width: '150px'}} />
                 </div>
             <nav>
             

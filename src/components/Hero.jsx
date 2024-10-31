@@ -173,7 +173,7 @@ const Hero = () => {
   const currentRecipe = featuredRecipes[currentRecipeIndex];
 
   return (
-    <div className='w-full h-[500px] mt-[80px] bg-[#DEDCFF] bg-opacity-75 flex flex-col md:flex-row items-center justify-center shadow-md md:ml-12 md:mr-16 md:rounded-lg overflow-hidden'>
+    <div className='h-[500px] mt-[80px] bg-[#DEDCFF] bg-opacity-75 flex flex-col md:flex-row items-center justify-center shadow-md md:ml-16 md:mr-16 md:rounded-lg overflow-hidden'>
 
       {/* Left side content */}
       <div className='flex flex-col items-center md:items-start px-6 py-6 md:p-12 text-center md:text-left md:w-2/5'>
@@ -188,7 +188,7 @@ const Hero = () => {
       </div>
 
       {/* Right side: image */}
-      <div className='h-72 md:h-full w-full md:w-3/5 flex items-center justify-center bg-gray-400'>
+      <div className='h-72 w-full md:h-full md:w-3/5 flex items-center justify-center'>
         <img 
           className='h-full w-full object-cover rounded-b-md md:rounded-r-md md:rounded-bl-none'
           src={currentRecipe.image}

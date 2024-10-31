@@ -46,10 +46,10 @@ const Home = () => {
       <Hero />
       <Categories />
   
-      <div className='bg-blue-100 w-full md:flex flex-col items-center md:mx-24 md:mt-10 md:mb-10' >
+      <div className='w-full md:flex flex-col items-center md:mx-24 md:mt-10 md:mb-10' >
   
         {/* Title */}
-        <div className='w-full max-w-screen-lg flex justify-start mb-4 px-4 md:px-0'>
+        <div className='w-full max-w-screen-lg flex justify-start mt-10 mb-4 px-4 md:px-0'>
           <h3 className='text-2xl md:text-3xl font-semibold bg-[#DEDCFF] p-3 rounded-md'>You May Like</h3>
         </div>
   

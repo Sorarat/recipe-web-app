@@ -170,16 +170,16 @@ const Categories = () => {
   };
 
   return (
-    <div className='bg-red-100 w-full  mt-10 md:mt-[100px] flex flex-col items-center md:mx-24'>
+    <div className='w-full  mt-10 md:mt-[100px] flex flex-col items-center md:mx-24'>
 
       {/* Title */}
-      <div className='w-full max-w-screen-lg flex justify-start mb-4 px-4 md:px-0'>
+      <div className='w-full max-w-screen-lg flex justify-center mb-4 px-4 md:px-0 md:justify-start'>
         <h3 className='text-2xl md:text-3xl font-semibold bg-[#DEDCFF] p-3 rounded-md'>Categories</h3>
       </div>
 
       {/* Categories Grid */}
       
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4 w-full max-w-screen-lg px-4 md:px-0'>  
+      <div className= 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4 w-full max-w-screen-lg px-4 md:px-0 justify-items-center'>  
         {categories.map((category, index) => (
           <CategoriesCard
             key={index}
