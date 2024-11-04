@@ -34,13 +34,13 @@ const Login = () => {
 
 
   return (
-    <div>
+    <div className='w-full h-screen flex flex-col justify-center items-center'>
       <div className='flex justify-center m-10'>
         <h3 className='text-3xl font-semibold text-gray-800'>Log In</h3>
       </div>
 
      
-      <div className='flex flex-col items-center bg-gray-100 p-10 mx-20 rounded-mds'>
+      <div className='flex flex-col items-center bg-gray-100 p-14 mx-20 rounded-md'>
 
         {/* Email Field */}
         <div className='mb-4'>

@@ -14,6 +14,8 @@ const Navbar = () => {
     // sign out
     const navigate = useNavigate();
     const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
+    const auth = getAuth();
+    const [nav, setNav] = useState(false);
 
     
     // listen for changes in auth state (whether the user is logged in or logged out)
@@ -32,12 +34,6 @@ const Navbar = () => {
 
     }, []);
 
-
-    const auth = getAuth();
-    
-
-    const [nav, setNav] = useState(false);
-
     const handleClick = () => {
         setNav(!nav);
         console.log('nav state: ', !nav);
@@ -46,7 +42,6 @@ const Navbar = () => {
     // nav = false - the hamburger menu is closed, show the bars icon
     // nav = true - the fatimes icon is shown
 
-    
     return (
 
     <header className='fixed w-full h-[60px] top-0 text-gray-00 bg-gray-50 '>
@@ -103,7 +98,7 @@ const Navbar = () => {
                 <ul className={
                     !nav 
                         ? 'hidden'
-                        : 'absolute top-0 left-0 w-full h-screen bg-[#0A142F] flex flex-col justify-center items-center'}>
+                        : 'absolute top-0 left-0 w-full h-screen bg-[#0A142F] flex flex-col justify-center items-center z-50'}>
                     <li className='py-6 text-3xl text-gray-50'>
                         <Link to="/" onClick={handleClick}>Home</Link>
                     </li>
@@ -143,13 +138,15 @@ const Navbar = () => {
 }
 
 
-const ProfileDropDown =  ( { setIsLoggedIn, navigate}) => {
+const ProfileDropDown =  ( { setIsLoggedIn, navigate,}) => {
 
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleDropDown = () => {
         setIsOpen(!isOpen);
     }
+
+
 
     const handleLogout = () => {
         signOut(auth).then(() => {
